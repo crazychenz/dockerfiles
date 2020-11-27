@@ -33,9 +33,9 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.
 #
 #    # set the base image to Debian
 #    # https://hub.docker.com/_/debian/
-#    FROM sayok/nvm
+#    FROM crazychenz/nvm
 #
-#    # These were values used in sayok/nvm
+#    # These were values used in crazychenz/nvm
 #    WORKDIR /workspace
 #    USER user
 #    ENV NVM_DIR /home/user/.nvm
