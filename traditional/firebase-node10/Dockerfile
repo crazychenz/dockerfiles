@@ -1,9 +1,13 @@
+#syntax=docker/dockerfile:1.2
+
 # set the base image to Debian
 # https://hub.docker.com/_/debian/
 FROM crazychenz/nvm
 
 USER root
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -yq openjdk-14-jre
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -yq openjdk-14-jre
 
 # These were values used in sayok/nvm
 WORKDIR /workspace
@@ -13,7 +17,7 @@ ENV NVM_DIR /home/user/.nvm
 # Install LTS node for Google Spark Plan.
 RUN source $NVM_DIR/nvm.sh && nvm install 10.23.0
 
-RUN source $NVM_DIR/nvm.sh && npm install -g yarn
+#RUN source $NVM_DIR/nvm.sh && npm install -g yalc
 
 # Dump node and npm information.
 RUN source $NVM_DIR/nvm.sh && (echo -en "Node: " ; node -v && echo -en "NPM: " ; npm -v)

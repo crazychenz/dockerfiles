@@ -44,6 +44,7 @@ function git_try_status {
 
 export -f git_branch git_color git_try_status
 
+#GIT_PSENTRY="\$(git_color)\$(git_branch)"
 GIT_PSENTRY="\$(git_try_status)"
 # https://stackoverflow.com/questions/20995351/how-can-i-get-docker-linux-container-information-from-within-the-container-itsel
 DOCKER_CONTAINER=$(basename "$(cat /proc/1/cpuset)" | cut -c1-8)

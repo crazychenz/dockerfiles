@@ -4,4 +4,4 @@ docker run \
     -ti --rm \
     --network host \
     -v $(pwd):/workspace \
-    crazychenz/ubuntu-20.04-base bash
+    $(whoami)/ubuntu-20.04-base bash
