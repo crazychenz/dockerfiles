@@ -11,6 +11,7 @@ cp $C/ubuntu-20.04/user/docker-user-settings.sh imports/
 # System Initialization
 sed "s/DOCKER_IMAGE_NAME_VALUE/$IMAGE_NAME/" $C/ubuntu-20.04/ubuntu-20.04-base.dockerfile
 cat $C/ubuntu-20.04/sudo.dockerfile
+cat $C/ubuntu-20.04/localhost-apt-cache.dockerfile
 
 # User Setup
 cat $C/ubuntu-20.04/usersetup.dockerfile
