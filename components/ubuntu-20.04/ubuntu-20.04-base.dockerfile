@@ -17,11 +17,12 @@ ENV TERM=xterm-256color
 
 # Update repository list and install baseline dependencies.
 RUN apt-get update && apt-get install -y \
-    net-tools \
+    net-tools iputils-ping \
     curl wget \
     python3 \
     vim vim-common \
     rsync \
     git \
+    openssh-client telnet \
     && apt-get -y autoclean
 
