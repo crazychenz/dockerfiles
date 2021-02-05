@@ -1,12 +1,13 @@
 #!/bin/sh
 
 # Configuration
-C=../../components
-IMAGE_NAME=ubuntu-20.04-basetest
+T=../..
+C=$T/components
+IMAGE_NAME=react-native-dev
 
 # Context Setup
 mkdir imports
-cp $C/ubuntu-20.04/user/docker-user-settings.sh imports/
+cp $T/configs/bash-user-settings.sh imports/
 
 # System Initialization
 sed "s/DOCKER_IMAGE_NAME_VALUE/$IMAGE_NAME/" $C/ubuntu-20.04/ubuntu-20.04-base.dockerfile
@@ -15,6 +16,7 @@ cat $C/ubuntu-20.04/localhost-apt-cache.dockerfile
 cat $C/ubuntu-20.04/android-sdk.dockerfile
 
 # User Setup
+echo RUN echo Change here $(date)
 cat $C/ubuntu-20.04/usersetup.dockerfile
 
     # Application Setup (as user)

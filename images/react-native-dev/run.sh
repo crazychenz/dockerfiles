@@ -1,7 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
 docker run \
     -ti --rm \
     --network host \
     -v $(pwd):/workspace \
-    $(whoami)/ubuntu-20.04-base bash
+    $(whoami)/react-native-dev \
+    bash -li -c "${*}"

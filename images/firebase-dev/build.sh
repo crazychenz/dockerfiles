@@ -2,7 +2,7 @@
 
 # TODO: sdfadf
 
-FINAL_TAG_NAME=$(whoami)/ubuntu-20.04-base
+FINAL_TAG_NAME=$(whoami)/firebase-dev
 TEMP_TAG_NAME=$FINAL_TAG_NAME-$(date +%Y%m%d-%H%M%S)
 
 # 1. Generate Dockerfile from Dockerfile.sh
