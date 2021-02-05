@@ -13,15 +13,17 @@ cp $T/configs/bash-user-settings.sh imports/
 sed "s/DOCKER_IMAGE_NAME_VALUE/$IMAGE_NAME/" $C/ubuntu-20.04/ubuntu-20.04-base.dockerfile
 cat $C/ubuntu-20.04/sudo.dockerfile
 cat $C/ubuntu-20.04/localhost-apt-cache.dockerfile
-cat $C/ubuntu-20.04/android-sdk.dockerfile
 
 # User Setup
-echo RUN echo Change here $(date)
 cat $C/ubuntu-20.04/usersetup.dockerfile
 
     # Application Setup (as user)
-    #cat $C/ubuntu-20.04/user/nvm.dockerfile
-    #cat $C/ubuntu-20.04/user/node-lts.dockerfile
+    cat $C/ubuntu-20.04/user/nvm.dockerfile
+    cat $C/ubuntu-20.04/user/node-lts.dockerfile
+
+    cat $C/ubuntu-20.04/user/buck-build.dockerfile
+    cat $C/ubuntu-20.04/user/android-sdk.dockerfile
+
     #echo "RUN sudo -E apt-get install -y openjdk-14-jre openjdk-14-jdk"
 
     # Finalization (as user)

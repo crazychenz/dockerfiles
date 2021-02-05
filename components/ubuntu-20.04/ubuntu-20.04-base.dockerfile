@@ -15,6 +15,9 @@ ENV DOCKER_IMAGE_NAME=DOCKER_IMAGE_NAME_VALUE
 # Prompts without color should be the edge case.
 ENV TERM=xterm-256color
 
+# Break that absurd bell!
+RUN echo "set bell-style none" >> /etc/inputrc
+
 # Update repository list and install baseline dependencies.
 RUN apt-get update && apt-get install -y \
     net-tools iputils-ping \
