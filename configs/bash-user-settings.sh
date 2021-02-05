@@ -65,7 +65,7 @@ export -f get_prompt_date
 function get_docker_ident {
     DOCKER_CONTAINER=$(basename "$(cat /proc/1/cpuset)" | cut -c1-8)
     DOCKER_IDENT="[$DOCKER_CONTAINER@$DOCKER_IMAGE_NAME]"
-    if [ "$DOCKER_IDENT" == "[/@]" ]; then
+    if [ "$DOCKER_IDENT" == '[/@]' ]; then
         echo ""
     else
         echo -e "$COLOR_LIGHT_PURPLE$DOCKER_IDENT "
