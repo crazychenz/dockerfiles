@@ -42,7 +42,11 @@ function git_try_status {
     git rev-parse --is-inside-work-tree &> /dev/null && echo -e $(git_color)$(git_branch)
 }
 
-export -f git_branch git_color git_try_status
+function get_prompt_date {
+    echo $(date +%Y-%m-%d-%H:%M:%S)
+}
+
+export -f git_branch git_color git_try_status get_prompt_date
 
 GIT_PSENTRY="\$(git_try_status)"
 # https://stackoverflow.com/questions/20995351/how-can-i-get-docker-linux-container-information-from-within-the-container-itsel
@@ -51,4 +55,4 @@ DOCKER_PSENTRY="$LIGHT_PURPLE[$DOCKER_CONTAINER@$DOCKER_IMAGE_NAME] "
 USERHOST_PSENTRY="$LIGHT_BLUE\u$COLOR_RESET@$COLOR_GREEN\h"
 PWD_PSENTRY="$COLOR_YELLOW\w"
 DEBIAN_CHROOT_PSENTRY="${debian_chroot:+($debian_chroot)}"
-PS1="$DEBIAN_CHROOT_PS_ENTRY$DOCKER_PSENTRY$USERHOST_PSENTRY$GIT_PSENTRY$COLOR_RESET$(date)\n$PWD_PSENTRY$COLOR_RESET\$ "
+PS1="$DEBIAN_CHROOT_PS_ENTRY$DOCKER_PSENTRY$USERHOST_PSENTRY$GIT_PSENTRY $COLOR_RESET\$(get_prompt_date)\n$PWD_PSENTRY$COLOR_RESET\$ "

@@ -13,5 +13,5 @@ USER ${username}
 RUN rsync -rv /etc/skel/ /home/${username}/
 RUN echo alias sudo=\'sudo -E\' >> /home/${username}/.bashrc
 
-ADD imports/docker-user-settings.sh /home/${username}/.docker-user-settings.sh
-RUN echo source ~/.docker-user-settings.sh >> /home/${username}/.bashrc
+ADD imports/bash-user-settings.sh /home/${username}/.bash-user-settings.sh
+RUN echo source ~/.bash-user-settings.sh >> /home/${username}/.bashrc

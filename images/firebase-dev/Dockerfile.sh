@@ -15,6 +15,7 @@ cat $C/ubuntu-20.04/sudo.dockerfile
 cat $C/ubuntu-20.04/localhost-apt-cache.dockerfile
 
 # User Setup
+echo "RUN echo $(date)"
 cat $C/ubuntu-20.04/usersetup.dockerfile
 
     # Application Setup (as user)
