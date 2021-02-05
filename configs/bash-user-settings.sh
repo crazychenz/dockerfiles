@@ -12,6 +12,8 @@ COLOR_RED="\e[38;5;167m"
 COLOR_GRAY="\e[38;5;243m"
 
 # Helper for showing colors in user specific terminal window+profile.
+# Inspired by:
+# https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
 function show_colors {
     python <<PYTHON_SCRIPT
 import sys
