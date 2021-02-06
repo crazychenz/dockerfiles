@@ -1,21 +1,20 @@
-COLOR_LIGHT_BROWN="\e[38;5;178m"
-COLOR_LIGHT_PURPLE="\e[38;5;135m"
-COLOR_LIGHT_BLUE="\e[38;5;87m"
-COLOR_LIGHT_GREEN="\e[38;5;78m"
-COLOR_LIGHT_YELLOW="\e[38;5;229m"
-COLOR_YELLOW="\e[38;5;184m"
-COLOR_BROWN="\e[\033[1;33m"
-COLOR_RESET="\e[\033[0m"
-COLOR_GREEN="\e[38;5;83m"
-COLOR_ORANGE="\e[38;5;208m"
-COLOR_RED="\e[38;5;167m"
-COLOR_GRAY="\e[38;5;243m"
+COLOR_LIGHT_BROWN="$(tput setaf 178)"
+COLOR_LIGHT_PURPLE="$(tput setaf 135)"
+COLOR_LIGHT_BLUE="$(tput setaf 87)"
+COLOR_LIGHT_GREEN="$(tput setaf 78)"
+COLOR_LIGHT_YELLOW="$(tput setaf 229)"
+COLOR_YELLOW="$(tput setaf 184)"
+COLOR_RESET="$(tput sgr0)"
+COLOR_GREEN="$(tput setaf 83)"
+COLOR_ORANGE="$(tput setaf 208)"
+COLOR_RED="$(tput setaf 167)"
+COLOR_GRAY="$(tput setaf 243)"
 
 # Helper for showing colors in user specific terminal window+profile.
 # Inspired by:
 # https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
 function show_colors {
-    python <<PYTHON_SCRIPT
+G    python <<PYTHON_SCRIPT
 import sys
 for i in range(0, 16):
     for j in range(0, 16):
@@ -73,7 +72,13 @@ function get_docker_ident {
 }
 export -f get_docker_ident
 
-USERHOST_PSENTRY="$COLOR_LIGHT_BLUE\u$COLOR_GRAY@$COLOR_GREEN\h "
+# Note: Without \[ \] properly placed, wrapping will not work correctly.
+# More info found at: https://robotmoon.com/256-colors/
+USERHOST_PSENTRY='\[$COLOR_LIGHT_BLUE\]\u\[$COLOR_GRAY\]@\[$COLOR_GREEN\]\h '
 PS1="${debian_chroot:+($debian_chroot)}$USERHOST_PSENTRY"
-PS1="$PS1\$(get_docker_ident)\$(git_branch)\$(get_prompt_date)"
-PS1="$PS1\n$COLOR_LIGHT_YELLOW\w$COLOR_RESET\$ "
+PS1="$PS1\$(get_docker_ident)"
+PS1="$PS1\$(git_branch)"
+PS1="$PS1\$(get_prompt_date)"
+WORKINGDIR='\[$COLOR_LIGHT_YELLOW\]\w'
+PROMPT_DELIM='\[$COLOR_RESET\]\$ '
+export PS1="$PS1\n$WORKINGDIR$PROMPT_DELIM"
