@@ -12,5 +12,5 @@ docker run \
     --network host \
     -v $(pwd):/workspace \
     $(whoami)/firebase-dev \
-    bash -li -c "${*}"
+    bash -li $PASSED_ARGS
 
