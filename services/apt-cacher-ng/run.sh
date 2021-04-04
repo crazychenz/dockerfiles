@@ -2,6 +2,7 @@
 
 docker run \
     --name apt-cacher-ng \
+    --network host \
     --init -d --restart=always --rm \
     --publish 3142:3142 \
     --volume /srv/docker/apt-cacher-ng:/var/cache/apt-cacher-ng \

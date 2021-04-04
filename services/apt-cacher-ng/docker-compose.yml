@@ -4,6 +4,7 @@ services:
   apt-cacher-ng:
     restart: always
     image: chenz/apt-cacher-ng
+    network_mode: "host"
     init: true
     ports:
     - "3142:3142"

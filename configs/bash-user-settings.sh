@@ -14,7 +14,7 @@ COLOR_GRAY="$(tput setaf 243)"
 # Inspired by:
 # https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html
 function show_colors {
-G    python <<PYTHON_SCRIPT
+    python <<PYTHON_SCRIPT
 import sys
 for i in range(0, 16):
     for j in range(0, 16):
