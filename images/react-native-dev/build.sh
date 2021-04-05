@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# TODO: sdfadf
-
 FINAL_TAG_NAME=$(whoami)/react-native-dev
 TEMP_TAG_NAME=$FINAL_TAG_NAME-$(date +%Y%m%d-%H%M%S)
 
@@ -11,6 +9,7 @@ TEMP_TAG_NAME=$FINAL_TAG_NAME-$(date +%Y%m%d-%H%M%S)
 # 4. Remove the temporal image name
 ./Dockerfile.sh | docker build \
     -t $TEMP_TAG_NAME \
+    --network host \
     ${*} \
     --build-arg username=$(whoami) \
     --build-arg uid=$(id -u) \
