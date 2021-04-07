@@ -9,4 +9,4 @@ docker run \
     -v /dev/bus/usb:/dev/bus/usb \
     -v $(pwd):/workspace \
     $(whoami)/openocd-dev \
-    bash -li -c "${*}"
+    bash -li $([ "$#" -gt "0" ] && echo '-c') "$@"
