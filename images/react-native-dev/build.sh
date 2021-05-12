@@ -1,6 +1,8 @@
 #!/bin/sh
 
-FINAL_TAG_NAME=$(whoami)/react-native-dev
+source ${DOTENV:-default.env}
+
+FINAL_TAG_NAME=$FINAL_TAG_NAME
 TEMP_TAG_NAME=$FINAL_TAG_NAME-$(date +%Y%m%d-%H%M%S)
 
 # 1. Generate Dockerfile from Dockerfile.sh
@@ -11,10 +13,10 @@ TEMP_TAG_NAME=$FINAL_TAG_NAME-$(date +%Y%m%d-%H%M%S)
     -t $TEMP_TAG_NAME \
     --network host \
     ${*} \
-    --build-arg username=$(whoami) \
-    --build-arg uid=$(id -u) \
-    --build-arg gid=$(id -g) \
-    --build-arg groupname=$(id -gn) \
+    --build-arg username=$CURRENT_USERNAME \
+    --build-arg uid=$CURRENT_UID \
+    --build-arg gid=$CURRENT_GID \
+    --build-arg groupname=$CURRENT_GROUPNAME \
     -f - . && \
     docker tag ${TEMP_TAG_NAME} ${FINAL_TAG_NAME} && \
     docker rmi ${TEMP_TAG_NAME}
