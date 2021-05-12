@@ -1,6 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-source ${DOTENV:-default.env}
+DOTENV=${DOTENV:-default.env}
+echo $DOTENV
+source $(realpath $DOTENV)
 
 FINAL_TAG_NAME=$FINAL_TAG_NAME
 TEMP_TAG_NAME=$FINAL_TAG_NAME-$(date +%Y%m%d-%H%M%S)
