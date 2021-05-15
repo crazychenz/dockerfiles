@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  jenkins:
+    image: crazychenz/jenkins
+    volumes:
+        - jenkins-home:/var/jenkins_home
+        - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+    - JENKINS_OPTS="--httpPort=3080"
+    network_mode: host
+    restart: always
+    init: true
+
+volumes:
+    jenkins-home:
+        external: false
