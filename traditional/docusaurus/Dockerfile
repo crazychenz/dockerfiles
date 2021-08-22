@@ -1,4 +1,5 @@
-FROM ubuntu:20.04
+FROM debian:buster-slim
+#FROM ubuntu:20.04
 
 # Most things (e.g. bash) are better than /bin/sh.
 # Note: This tricks `docker build` into using bash instead of
@@ -18,8 +19,8 @@ ENV TERM=screen-256color
 # Break that absurd bell!
 RUN echo "set bell-style none" >> /etc/inputrc
 
-RUN rm -rf /etc/apt/sources.list /var/lib/apt/lists/*
-ADD imports/sources.list /etc/apt/sources.list
+#RUN rm -rf /etc/apt/sources.list /var/lib/apt/lists/*
+#ADD imports/sources.list /etc/apt/sources.list
 
 # Update repository list and install baseline dependencies.
 RUN apt-get update && apt-get install -y \
@@ -36,7 +37,9 @@ RUN apt-get install -y \
     build-essential 
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x  | bash -
-RUN apt-get install -y nodejs
+# Uncommon this line if running on arm64.
+#RUN dpkg --add-architecture armhf
+RUN apt-get update && apt-get install -y nodejs
 
 RUN npm install -g @docusaurus/init yarn
 
