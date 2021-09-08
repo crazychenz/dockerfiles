@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build -t crazychenz/nginx .
+docker build --network host -t crazychenz/nginx .
