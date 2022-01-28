@@ -1,0 +1,8 @@
+# See https://github.com/moby/buildkit/blob/master/docs/buildkitd.toml.md for more info.
+
+debug = false
+# root is where all buildkit state is stored.
+# root = "/var/lib/buildkit"
+# insecure-entitlements allows insecure entitlements, disabled by default.
+#insecure-entitlements = [ "network.host", "security.insecure" ]
+insecure-entitlements = [ "network.host" ]
